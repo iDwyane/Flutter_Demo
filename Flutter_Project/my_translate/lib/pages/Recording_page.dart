@@ -85,6 +85,9 @@ class _RecordingTranslateState extends State<RecordingTranslate> {
     return IconButton(
       onPressed: () {
         print('点击我了');
+        // 刷新UI
+        setState((){ 
+        });
         _items[index].isCollection = !_items[index].isCollection;
         print(!_items[index].isCollection);
       },
