@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'MoviesWidget.dart';
-import 'MineWidget.dart';
-import './HotMovies/HotWidget.dart';
+import './movies/MoviesWidget.dart';
+import './mine/MineWidget.dart';
+import './hot/HotWidget.dart';
+import './citys/CitysWidget.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,6 +16,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: '豆瓣电影'),
+      routes: {
+        '/Citys': (context) => CitysWidget(),
+      },
     );
   }
 }

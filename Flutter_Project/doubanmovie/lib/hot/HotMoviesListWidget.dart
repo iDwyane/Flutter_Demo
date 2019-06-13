@@ -1,10 +1,15 @@
-import 'package:doubanmovie/HotMovies/HotMovieData.dart';
+import 'package:doubanmovie/hot/HotMovieData.dart';
 import 'package:flutter/material.dart';
 import 'HotMovieItemWidget.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class HotMoviesListWidget extends StatefulWidget {
+  String curCity;
+
+  HotMoviesListWidget(String city) {
+    curCity = city;
+  }
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -12,6 +17,7 @@ class HotMoviesListWidget extends StatefulWidget {
   }
 }
 
+// 添加 with AutomaticKeepAliveClientMixin 让
 class HotMoviesListWidgetState extends State<HotMoviesListWidget> with AutomaticKeepAliveClientMixin {
   
   @override
@@ -67,7 +73,7 @@ class HotMoviesListWidgetState extends State<HotMoviesListWidget> with Automatic
     List<HotMovieData> serverDataList = new List();
     final String url =
         'https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E6%B7%B1%E5%9C%B3&start=0&count=10&client=&udid=';
-    var response = await http.get(url);
+    var response = await http.get(url); // await 会阻塞当前的操作，直到结果返回才会执行下一步。而且请注意，await 只能在 async 里面使用。
     if (response.statusCode == 200) {
       var responseJson = json.decode(response.body);
       print(response);
